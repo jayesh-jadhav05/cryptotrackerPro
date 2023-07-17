@@ -1,0 +1,143 @@
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 3rem;
+    height: 90vh;
+}
+
+.track-heading,
+.real-time-heading {
+    margin: 0;
+    font-size: 6.2rem;
+}
+
+.track-heading {
+    color: var(--white);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: var(--white);
+}
+
+.track-heading:hover {
+    color: var(--black);
+    -webkit-text-stroke-color: var(--white);
+    transition: all 0.3s;
+}
+
+.real-time-heading {
+    color: var(--blue);
+}
+
+.hero-para {
+    color: var(--grey);
+    font-size: 1rem;
+}
+
+.flex-btns {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+
+.hero-right-data {
+    width: 50%;
+    position: relative;
+}
+
+.iphone-image {
+    position: absolute;
+    z-index: 100;
+    min-width: 300px;
+    width: 50%;
+    right: 0;
+    padding: 1rem;
+}
+
+.iphone-gradient {
+    position: absolute;
+    min-width: 250px;
+    border-radius: 1.2rem;
+    width: 40%;
+    right: 0;
+    top: 7rem;
+}
+
+/* ---------------------------- Responsive Design -------------------------------- */
+
+
+@media only screen and (max-width: 1250px) {
+
+    .track-heading,
+    .real-time-heading {
+        font-size: 5rem;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+
+
+    .iphone-image {   
+        min-width: 250px;
+    }
+
+    .iphone-gradient {
+        min-width: 200px; 
+        top: 6rem;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .hero-right-data {
+        display: block;
+        margin: auto;
+        margin-top: 3rem;
+    }
+
+    .hero-left-data {
+        width: 100%;
+    }
+
+    .iphone-image {  
+        left: -3rem; 
+    }
+
+    .iphone-gradient {
+       left: 17%;
+    }
+
+    .track-heading,
+    .real-time-heading {
+        font-size: 3rem;
+        text-align: center;
+    }
+    .hero-para {
+        text-align: center;
+    }
+
+    .flex-btns {
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+
+    .track-heading,
+    .real-time-heading {
+        font-size: 2rem;
+    }
+
+    .iphone-image {  
+        left: -4rem; 
+    }
+
+    .iphone-gradient {
+       left: -1rem;
+    }
+}

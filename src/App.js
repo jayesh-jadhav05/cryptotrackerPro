@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Home from './pages/Home';
+import Compare from './pages/Compare';
+import Watchlist from './pages/Watchlist';
+import DashboardPage from './pages/DashboardPage';
+import { Routes, Route } from 'react-router-dom';
+import Coin from './pages/Coin';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/' element={ <Home /> } />
+      <Route path='/compare' element={ <Compare /> } />
+      <Route path='/watchlist' element={ <Watchlist /> } />
+      <Route path='/dashboard' element={ <DashboardPage /> } />
+      <Route path='/coin/:id' element={ <Coin />} />
+    </Routes>
   );
 }
 
