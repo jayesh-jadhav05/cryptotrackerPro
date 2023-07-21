@@ -16,7 +16,6 @@ export default function TabComponent({ coins }) {
 
   const [value, setValue] = useState("grid");
 
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -39,10 +38,6 @@ export default function TabComponent({ coins }) {
   if (JSON.parse(localStorage.getItem('WatchList')) === null) {
     localStorage.setItem('WatchList', JSON.stringify([]));
   }
-  //This Function Check The Coin Is aleady Present Or Not..
-  // function isObjectPresentInArray(arr, obj) {
-  //   return arr.some(item => JSON.stringify(item[0]) === JSON.stringify(obj));
-  // }
 
   const check = (coins,coin) => {
       for(let i=0; i<coins.length;i++){
@@ -55,18 +50,14 @@ export default function TabComponent({ coins }) {
   };
 
   const addToWatchList = (coinData) => {
-      console.log(coinData)
       var data = JSON.parse(localStorage.getItem('WatchList'));
-      
       if (check(data,coinData) === false) {
         const arr = [coinData,true];
         data.push(arr);
         localStorage.setItem('WatchList', JSON.stringify(data));
         toast.success('Coin added in WatchList 👍', {position: "top-center",autoClose: 1000,hideProgressBar: false,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,theme: "dark",});
       } else {
-        const newObj = data.filter((coin) => coin[0].id !== coinData.id);
-        localStorage.setItem('WatchList', JSON.stringify(newObj));
-        toast.warning('Coin is Removed 👍', {position: "top-center",autoClose: 1000,hideProgressBar: false,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,theme: "dark",});
+        toast.warning('Coin is already added 👍', {position: "top-center",autoClose: 1000,hideProgressBar: false,closeOnClick: true,pauseOnHover: true,draggable: true,progress: undefined,theme: "dark",});
       }
   };
 
@@ -81,7 +72,7 @@ export default function TabComponent({ coins }) {
           <div className='grid-flex'>
             {
               coins.map((coin, index) => {
-                return <motion.div initial={{ opacity:0, x:-50}} animate={{ opacity:1, x:0}} transition={{ duration:0.5 ,delay:0.5}}><GridComponent coin={coin} key={index} addToWatchList={addToWatchList}  /></motion.div>
+                return <motion.div initial={{ opacity:0, x:-50}} animate={{ opacity:1, x:0}} transition={{ duration:0.5 ,delay:0.5}}><GridComponent coin={coin} key={index} addToWatchList={addToWatchList} isCheck={true}/></motion.div>
               })
             }
           </div>

@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './header.css';
 import TemporaryDrawer from './drawer'
 import Button from '../Button/Button';
 import { NavLink } from 'react-router-dom';
+import SwitchColor from '../Switch/SwitchColor';
+import { toast } from 'react-toastify';
 
 const Header = () => {
+  const [filter,setFilter] = useState(true);
+
+  const handleColorChange = (colors) => {
+    Object.entries(colors).forEach(([variable, color]) => {
+      document.documentElement.style.setProperty(variable, color);
+    });
+  };
+
+
+  const changeTheme = () => {
+    if(filter)
+    {
+      toast.success('Dark Theme ON 👍', { position: "top-center", autoClose: 1000, hideProgressBar: false, closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined, theme: "dark", });
+    } else {
+      toast.success('Light Theme ON 👍', { position: "top-center", autoClose: 1000, hideProgressBar: false, closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined, theme: "dark", });
+    }
+    setFilter(!filter)
+  };
+
   return (
     <div className='Header'>
       <h2 className='logo'>CryptoTrackerPro<span style={{ color: "var(--red)" }}>.</span><span style={{ color: "var(--blue)" }}>.</span><span style={{ color: "var(--green)" }}>.</span></h2>
       <div className='navLinks'>
+
+      <p className="toggleIcon-head link" onClick={changeTheme}><SwitchColor filter={filter} handleColorChange={handleColorChange} /></p>
+
         <NavLink to="/">
           <p className='link'>Home</p>
         </NavLink>

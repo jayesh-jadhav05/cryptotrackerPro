@@ -4,31 +4,11 @@ import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import { NavLink } from 'react-router-dom';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const GridComponent = ({ coin,addToWatchList }) => {
-     const [red, setRed] = useState({border: "2px solid var(--red)", borderRadius: "50%", padding: "0.3rem"})
-    const [green, setGreen] = useState({border:"2px solid var(--green)", borderRadius: "50%", padding: "0.3rem"})
-    const [isGreenTrue,setIsGreenTrue] = useState(true);
-    const [isRedTrue,setIsRedTrue] = useState(true);
+const GridComponent = ({ coin, addToWatchList,isCheck}) => {
 
-    const changeColor = (colorType) => {
-        if(colorType === "red") {
-            if(isRedTrue) {
-                setRed({...red,color:"var(--red)"});
-            }else {
-                setRed({...red,color:"var(--white)"});
-            }
-            setIsRedTrue(!isRedTrue);
-        } else {
-            if(isGreenTrue) {
-                setGreen({...green,color:"var(--green)"});
-            }else {
-                setGreen({...green,color:"var(--white)"});
-            }
-            setIsGreenTrue(!isGreenTrue);
-        }
-    }
-    
+    const [Color,setColor] = useState({color:"(--white)"})
 
     return (
         <div className={`grid-container ${coin.price_change_percentage_24h < 0 && "grid-container-red"}`} >
@@ -44,15 +24,11 @@ const GridComponent = ({ coin,addToWatchList }) => {
 
                     </div>
                 </NavLink>
-                {
-                    coin.price_change_percentage_24h < 0 ?
-                    <div className='watchlist-container' onClick={() => addToWatchList(coin)}>
-                        <StarRoundedIcon style={red} onClick={() => changeColor("red")}/>
-                    </div>
-                    : <div className='watchlist-container' onClick={() => addToWatchList(coin)}>
-                        <StarRoundedIcon style={green} onClick={() => changeColor("green")} />
-                    </div>
-                }
+                <div className='watchlist-container' onClick={() => addToWatchList(coin)}>
+                    {
+                        isCheck ? <StarRoundedIcon onClick={() => setColor({color:"red"})} style={Color}/> : <DeleteIcon style={{color:"red"}} />
+                    }
+                </div>
             </div>
 
 

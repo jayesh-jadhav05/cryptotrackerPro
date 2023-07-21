@@ -28,7 +28,7 @@ export default function TemporaryDrawer() {
                     <NavLink to="/watchlist">
                         <p className='link'>Watchlist</p>
                     </NavLink>
-                    <NavLink to="dashboard">
+                    <NavLink to="/dashboard">
                         <Button btnName="Dashboard" />
                     </NavLink>
                 </div>
