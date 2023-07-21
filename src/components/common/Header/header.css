@@ -13,6 +13,10 @@
     font-size: 1.2rem;
 }
 
+.colorFilter {
+    display: flex;
+    gap: 1rem;
+}
 .navLinks {
     display: flex;
     justify-content: flex-end;
@@ -102,5 +106,30 @@
     }
     .btn {
         width: fit-content;
+    }
+
+    .colorFilter {
+        position: relative;
+        left: 9rem;
+    }
+}
+
+@media only screen and (max-width: 570px) {
+    .colorFilter {
+        left: 6rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .colorFilter {
+        gap: 0;
+        position: relative;
+        left: 2rem;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .colorFilter {
+        left: 0.5rem;
     }
 }

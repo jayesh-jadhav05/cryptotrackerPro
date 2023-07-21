@@ -29,10 +29,9 @@ const Header = () => {
   return (
     <div className='Header'>
       <h2 className='logo'>CryptoTrackerPro<span style={{ color: "var(--red)" }}>.</span><span style={{ color: "var(--blue)" }}>.</span><span style={{ color: "var(--green)" }}>.</span></h2>
+      <div className='colorFilter'>
+      <p className="toggleIcon-head" onClick={changeTheme}><SwitchColor filter={filter} handleColorChange={handleColorChange} /></p>
       <div className='navLinks'>
-
-      <p className="toggleIcon-head link" onClick={changeTheme}><SwitchColor filter={filter} handleColorChange={handleColorChange} /></p>
-
         <NavLink to="/">
           <p className='link'>Home</p>
         </NavLink>
@@ -48,6 +47,7 @@ const Header = () => {
         <NavLink to="/dashboard">
            <Button btnName='Dashboard' onClick={() => console.log('btn clicked')}/>
         </NavLink>
+      </div>
       </div>
       <div className='responsive-drawer'>
          <TemporaryDrawer />
