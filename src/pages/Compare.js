@@ -51,9 +51,9 @@ const Compare = () => {
   // this onchange function run depend on toggle price or market cap or total volume
   const handlePriceTypeChange = async (event, newType) => {
     setIsLoader(true);
-    setPriceToggle(newType);
-    const prices1 = await getCoinPrices(crypto1, days, newType);
-    const prices2 = await getCoinPrices(crypto2, days, newType);
+    setPriceToggle(event.target.value);
+    const prices1 = await getCoinPrices(crypto1, days, event.target.value);
+    const prices2 = await getCoinPrices(crypto2, days, event.target.value);
     settingChartData(setChartData, prices1, prices2);
     setIsLoader(false);
 
