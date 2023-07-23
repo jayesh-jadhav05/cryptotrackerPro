@@ -52,8 +52,8 @@ const Coin = () => {
     // this onchange function run depend on toggle price or market cap or total volume
     const handlePriceTypeChange = async(event, newType) => {
       setIsLoader(true);
-      setPriceToggle(newType);
-      const prices = await getCoinPrices(id, days,newType);
+      setPriceToggle(event.target.value);
+      const prices = await getCoinPrices(id, days,event.target.value);
       if (prices.length > 0) {
           settingChartData(setChartData, prices);
           setIsLoader(false);
