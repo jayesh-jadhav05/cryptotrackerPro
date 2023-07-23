@@ -7,7 +7,7 @@ import SwitchColor from '../Switch/SwitchColor';
 import { toast } from 'react-toastify';
 
 const Header = () => {
-  const [filter,setFilter] = useState(true);
+  const [filter,setFilter] = useState(false);
 
   const handleColorChange = (colors) => {
     Object.entries(colors).forEach(([variable, color]) => {
